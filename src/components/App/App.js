@@ -17,6 +17,10 @@ import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 
+import DeckDetail from '../DeckDetail/DeckDetail';
+import CreateCard from '../CreateCard/CreateCard';
+import PracticePage from '../PracticePage/PracticePage';
+
 import './App.css';
 
 class App extends Component {
@@ -55,6 +59,9 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
+            <Route exact path="/deck" component={DeckDetail} />
+            <Route exact path="/create" component={CreateCard} />
+            <Route exact path="/practice" component={PracticePage} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
