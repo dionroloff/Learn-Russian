@@ -1,10 +1,11 @@
 import { put, takeLatest } from 'redux-saga/effects';
 import axios from 'axios';
 
+//This saga exists to let other components access deck id's
 function* getDeck(action) {
     try {
         console.log('in getDeck saga');
-        console.log(action.payload);
+        yield put({type: 'GET_DECK_ID', payload: action.payload})
     } catch(error) {
         console.log('error in getDeck saga: ', error);
     }

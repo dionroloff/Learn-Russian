@@ -30,6 +30,7 @@ class CreateCard extends Component {
     }
 
     render() {
+        console.log(this.props.state.provideDeckId)
         return(
             <div>
                 <h2>Create Card page</h2>
