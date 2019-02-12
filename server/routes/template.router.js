@@ -8,6 +8,12 @@ const router = express.Router();
 router.get('/', (req, res) => {
     
 });
+/**
+ * POST route template
+ */
+router.post('/', (req, res) => {
+
+});
 
 router.get('/decks', (req, res) => {
     console.log(`req.body: ${req.body}`);
@@ -24,11 +30,23 @@ router.get('/decks', (req, res) => {
     } else {res.sendStatus(403);}
 })
 
-/**
- * POST route template
- */
 router.post('/', (req, res) => {
-
+    const newCard = req.body;
+    const queryText = `INSERT INTO "card" ("word_en", "user_id", "category")
+                       VALUES ($1, $2, $3);`;
+    const queryValues = [
+      newCard.en_word,
+      newCard.ru_word,
+      newCard.image
+    ];
+    pool.query(queryText, queryValues)
+      .then(() => { res.sendStatus(201); })
+      .catch((err) => {
+        console.log('Error completing INSERT card query', err);
+        res.sendStatus(500);
+      });
 });
+
+
 
 module.exports = router;

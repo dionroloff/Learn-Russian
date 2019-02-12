@@ -14,6 +14,9 @@ class UserPage extends Component {
     categories: [],
   }
 
+  //When the component mounts, immediately GET's the deck info
+  //from the database and assigns .data to state.categories.
+  //This gets passed down via props to DeckItem.js.
   componentDidMount() {
     axios.get('/api/user/decks')
       .then((response) => {
@@ -49,8 +52,6 @@ class UserPage extends Component {
             })}
           </tbody>
         </table>
-
-        {/* <LogOutButton className="log-in" /> */}
       </div>
     )
 

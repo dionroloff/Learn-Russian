@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class DeckItem extends Component {
 
-
+  //When the user clicks on an individul deck,
+  //action of type "GET_DECK" is dispatched to the decksSaga
   handleClick = (event) => {
     console.log(this.props.id);
 
-    // this.props.dispatch({ type: 'GET_DECK' })
-    // this.props.history.push("/deck");
-  }
-
-//   <h3 id={this.state.id} onClick={this.handleClick}>Animals</h3>
-//   <h3 onClick={this.handleClick}>Food</h3>
+    this.props.dispatch({ type: 'GET_DECK', payload: this.props.id});
+    // this.props.history.push('/decks');
+    
+  } //end handleClick
 
     render() {
         return(
@@ -24,4 +24,8 @@ class DeckItem extends Component {
     }
 }
 
-export default DeckItem;
+const mapStateToProps = (state) => ({
+    state
+});
+
+export default connect(mapStateToProps)(DeckItem);
