@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class DeckDetail extends Component {
 
@@ -11,10 +12,14 @@ class DeckDetail extends Component {
         this.props.history.push("/practice");
     }
 
+    //https://via.placeholder.com/200
+
     render() {
+
         return (
             <div>
                 <h1>Detail of Deck</h1>
+                {/* <img src=/> */}
                 <table>
                     <thead>
                         <tr><th>Russian Word</th><th>English Translation</th><th>Edit Card</th></tr>

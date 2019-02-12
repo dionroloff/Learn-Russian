@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class PracticePage extends Component {
 
     seeStats = (event) => {
-        console.log('seeStats clicked')
+        this.props.history.push("/stats");
     }
 
     returnHome = (event) => {

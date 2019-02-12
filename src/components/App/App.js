@@ -20,6 +20,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import DeckDetail from '../DeckDetail/DeckDetail';
 import CreateCard from '../CreateCard/CreateCard';
 import PracticePage from '../PracticePage/PracticePage';
+import StatsPage from '../StatsPage/StatsPage';
 
 import './App.css';
 
@@ -62,10 +63,11 @@ class App extends Component {
             <Route exact path="/deck" component={DeckDetail} />
             <Route exact path="/create" component={CreateCard} />
             <Route exact path="/practice" component={PracticePage} />
+            <Route exact path="/stats" component={StatsPage} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </Router>
   )}
