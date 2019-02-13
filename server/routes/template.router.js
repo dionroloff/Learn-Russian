@@ -21,7 +21,9 @@ router.get('/your-decks', (req, res) => {
     console.log(`req.body: ${req.body}`);
     if (req.isAuthenticated()) {
         console.log(`req.user: ${req.user}`);
-        pool.query(`SELECT * FROM "category";`)
+        const queryText = `select *
+                    from "category";`;
+        pool.query(queryText)
         .then((results) => {
             res.send(results.rows);
         }).catch((error) => {
