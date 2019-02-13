@@ -15,7 +15,9 @@ router.post('/', (req, res) => {
 
 });
 
-router.get('/decks', (req, res) => {
+//This GET request runs when the user is on the YourDecks page
+//It is reponsible for displaying each of the user's decks from the DB
+router.get('/your-decks', (req, res) => {
     console.log(`req.body: ${req.body}`);
     if (req.isAuthenticated()) {
         console.log(`req.user: ${req.user}`);
@@ -28,6 +30,27 @@ router.get('/decks', (req, res) => {
         })
 
     } else {res.sendStatus(403);}
+})
+
+router.get('/:id', (req, res) => {
+    console.log('req.params: ', req.params);
+    //JOIN query joins cards table and category table to select 
+    //only the cards of a particular category
+    const queryText = `select "word_en", "word_ru", "image", "category", "name" 
+                       from "card"
+                       join "category" 
+                       on "card"."category" = "category"."id"
+                       where "category" = $1;`;
+    pool.query(queryText, [req.params.id])
+    .then((sqlResult) => {
+        //sqlResults refers to the joined card and category tables
+        //We will send this data to the saga when we call router.get('/cards');
+        res.send(sqlResult.rows);
+        res.sendStatus(200);
+    }).catch((sqlError) => {
+        console.log(`Error in completing /cards query: ${sqlError}`);
+        res.sendStatus(500);
+    })
 })
 
 // router.post('/', (req, res) => {

@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 class DeckItem extends Component {
 
     //When the user clicks on an individul deck,
-    //action of type "GET_DECK" is dispatched to the decksSaga
+    //push to history the individual deck URL
     handleClick = (event) => {
 
     console.log(this.props.id);

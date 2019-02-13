@@ -18,7 +18,7 @@ class YourDecks extends Component {
   //from the database and assigns .data to state.categories.
   //This gets passed down via props to DeckItem.js.
   componentDidMount() {
-    axios.get('/api/user/decks')
+    axios.get('/api/cards/your-decks')
       .then((response) => {
         this.setState({
           categories: response.data
