@@ -4,7 +4,14 @@ import { connect } from 'react-redux';
 class CardItem extends Component {
     render() {
         return(
-            <div>something</div>
+            <tr>
+                <td>
+                    {this.props.russian}
+                </td>
+                <td>
+                    {this.props.english}
+                </td>
+            </tr>
         )
     }
 }

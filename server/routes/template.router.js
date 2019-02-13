@@ -32,6 +32,8 @@ router.get('/your-decks', (req, res) => {
     } else {res.sendStatus(403);}
 })
 
+//this router allows the user to click on a particular deck and only see 
+//the cards from that deck from the database
 router.get('/:id', (req, res) => {
     console.log('req.params: ', req.params);
     //JOIN query joins cards table and category table to select 

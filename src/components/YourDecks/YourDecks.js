@@ -15,7 +15,7 @@ class YourDecks extends Component {
   }
 
   //When the component mounts, immediately GET's the deck info
-  //from the database and assigns .data to state.categories.
+  //from the database and assigns response.data to state.categories.
   //This gets passed down via props to DeckItem.js.
   componentDidMount() {
     axios.get('/api/cards/your-decks')
