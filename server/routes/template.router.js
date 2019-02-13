@@ -30,22 +30,22 @@ router.get('/decks', (req, res) => {
     } else {res.sendStatus(403);}
 })
 
-router.post('/', (req, res) => {
-    const newCard = req.body;
-    const queryText = `INSERT INTO "card" ("word_en", "user_id", "category")
-                       VALUES ($1, $2, $3);`;
-    const queryValues = [
-      newCard.en_word,
-      newCard.ru_word,
-      newCard.image
-    ];
-    pool.query(queryText, queryValues)
-      .then(() => { res.sendStatus(201); })
-      .catch((err) => {
-        console.log('Error completing INSERT card query', err);
-        res.sendStatus(500);
-      });
-});
+// router.post('/', (req, res) => {
+//     const newCard = req.body;
+//     const queryText = `INSERT INTO "card" ("word_en", "user_id", "category")
+//                        VALUES ($1, $2, $3);`;
+//     const queryValues = [
+//       newCard.en_word,
+//       newCard.ru_word,
+//       newCard.image
+//     ];
+//     pool.query(queryText, queryValues)
+//       .then(() => { res.sendStatus(201); })
+//       .catch((err) => {
+//         console.log('Error completing INSERT card query', err);
+//         res.sendStatus(500);
+//       });
+// });
 
 
 

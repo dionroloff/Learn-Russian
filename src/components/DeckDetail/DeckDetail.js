@@ -19,6 +19,7 @@ class DeckDetail extends Component {
         return (
             <div>
                 <h1>Detail of Deck</h1>
+                {JSON.stringify(this.props.match.params)}
                 {/* <img src=/> */}
                 <table>
                     <thead>

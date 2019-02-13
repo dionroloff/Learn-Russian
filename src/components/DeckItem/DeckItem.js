@@ -3,15 +3,14 @@ import { connect } from 'react-redux';
 
 class DeckItem extends Component {
 
-  //When the user clicks on an individul deck,
-  //action of type "GET_DECK" is dispatched to the decksSaga
+    //When the user clicks on an individul deck,
+    //action of type "GET_DECK" is dispatched to the decksSaga
     handleClick = (event) => {
-    console.log(this.props.id);
 
-    this.props.dispatch({ type: 'GET_DECK', payload: this.props.id});
-    // this.props.history.push('/decks');
+    console.log(this.props.id);
+    this.props.history.push(`/deck/${this.props.id}`);
     
-  } //end handleClick
+    } //end handleClick
 
     render() {
         return(

@@ -14,7 +14,7 @@ import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 
 import AboutPage from '../AboutPage/AboutPage';
-import UserPage from '../UserPage/UserPage';
+import YourDecks from '../YourDecks/YourDecks';
 import InfoPage from '../InfoPage/InfoPage';
 
 import DeckDetail from '../DeckDetail/DeckDetail';
@@ -51,7 +51,7 @@ class App extends Component {
             <ProtectedRoute
               exact
               path="/home"
-              component={UserPage}
+              component={YourDecks}
             />
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
@@ -60,7 +60,7 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
-            <Route exact path="/deck" component={DeckDetail} />
+            <Route exact path="/deck/:id" component={DeckDetail} />
             <Route exact path="/create" component={CreateCard} />
             <Route exact path="/practice" component={PracticePage} />
             <Route exact path="/stats" component={StatsPage} />

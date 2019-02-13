@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import axios from 'axios';
-import DeckItem from './../DeckItem/DeckItem';
+import DeckItem from '../DeckItem/DeckItem';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
 
-class UserPage extends Component {
+class YourDecks extends Component {
 
   state = {
     categories: [],
@@ -48,7 +48,7 @@ class UserPage extends Component {
           </thead>
           <tbody>
             {this.state.categories.map((deck, i) => {
-              return <DeckItem key={i} id={deck.id} category={deck.name} />
+              return <DeckItem history={this.props.history} key={i} id={deck.id} category={deck.name} />
             })}
           </tbody>
         </table>
@@ -68,4 +68,4 @@ const mapStateToProps = state => ({
 });
 
 // this allows us to use <App /> in index.js
-export default connect(mapStateToProps)(UserPage);
+export default connect(mapStateToProps)(YourDecks);
