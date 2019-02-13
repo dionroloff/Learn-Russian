@@ -2,18 +2,18 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-/**
- * GET route template
- */
-router.get('/', (req, res) => {
+// /**
+//  * GET route template
+//  */
+// router.get('/', (req, res) => {
     
-});
-/**
- * POST route template
- */
-router.post('/', (req, res) => {
+// });
+// /**
+//  * POST route template
+//  */
+// router.post('/', (req, res) => {
 
-});
+// });
 
 //This GET request runs when the user is on the YourDecks page
 //It is reponsible for displaying each of the user's decks from the DB
@@ -55,22 +55,31 @@ router.get('/:id', (req, res) => {
     })
 })
 
-// router.post('/', (req, res) => {
-//     const newCard = req.body;
-//     const queryText = `INSERT INTO "card" ("word_en", "user_id", "category")
-//                        VALUES ($1, $2, $3);`;
-//     const queryValues = [
-//       newCard.en_word,
-//       newCard.ru_word,
-//       newCard.image
-//     ];
-//     pool.query(queryText, queryValues)
-//       .then(() => { res.sendStatus(201); })
-//       .catch((err) => {
-//         console.log('Error completing INSERT card query', err);
-//         res.sendStatus(500);
-//       });
-// });
+//this router POSTs a new card to the database
+router.post('/', (req, res) => {
+    console.log(req.body)
+    const newCard = req.body;
+    const queryText = `insert into "card" ("word_en", "word_ru", "image", "user_id", "category")
+                       values ($1, $2, $3, $4, $5);`;
+    // req.user.id is created by passport for logged in users
+    const queryValues = 
+    [
+      newCard.word_en,
+      newCard.word_ru,
+      newCard.image,
+      req.user.id,
+      newCard.deck_category
+    ];
+    pool.query(queryText, queryValues)
+      .then((response) => { 
+          console.log('response: ', response)
+          res.sendStatus(201); 
+        })
+      .catch((error) => {
+        console.log('Error completing INSERT card query', error);
+        res.sendStatus(500);
+      });
+});
 
 
 

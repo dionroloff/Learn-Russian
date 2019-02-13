@@ -60,10 +60,10 @@ class App extends Component {
               path="/info"
               component={InfoPage}
             />
-            <Route exact path="/deck/:id" component={DeckDetail} />
-            <Route exact path="/create" component={CreateCard} />
-            <Route exact path="/practice" component={PracticePage} />
-            <Route exact path="/stats" component={StatsPage} />
+            <Route exact path='/deck/:id' component={DeckDetail} />
+            <Route exact path='/create/:id' component={CreateCard} />
+            <Route exact path='/practice' component={PracticePage} />
+            <Route exact path='/stats' component={StatsPage} />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>

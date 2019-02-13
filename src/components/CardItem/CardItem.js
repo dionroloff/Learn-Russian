@@ -11,6 +11,9 @@ class CardItem extends Component {
                 <td>
                     {this.props.english}
                 </td>
+                <td>
+                    {this.props.category}
+                </td>
             </tr>
         )
     }

@@ -2,26 +2,29 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class CreateCard extends Component {
-
+    
+    //we automatically assign the deck id and user id to state
     state = {
-        en_word: '',
-        ru_word: '',
+        word_en: '',
+        word_ru: '',
         image: '',
-        category: ''
+        deck_category: Number(this.props.match.params.id),
+        user_id: this.props.state.user.id
     }
 
     handleChange = (event) => {
-        if (event.target.name === 'en_word') {
-            this.setState({en_word: event.target.value})
-        } else if (event.target.name === 'ru_word') {
-            this.setState({ru_word: event.target.value})
+        if (event.target.name === 'word_en') {
+            this.setState({word_en: event.target.value})
+        } else if (event.target.name === 'word_ru') {
+            this.setState({word_ru: event.target.value})
         } else {
             this.setState({image: event.target.value})
         }
+        
     }
 
     createCard = (event) => {
-        console.log('card create button');
+        console.log(this.state)
         this.props.dispatch({type: 'CREATE_CARD', payload: this.state});
     }
 
@@ -30,12 +33,16 @@ class CreateCard extends Component {
     }
 
     render() {
-        console.log(this.props.state.provideDeckId)
+        
         return(
             <div>
+                <p>user id: {JSON.stringify(this.props.state.user.id)}</p>
+                {/* originally this was a string */}
+                <p>deck id: {Number(this.props.match.params.id)}</p>
+                
                 <h2>Create Card page</h2>
-                <input name='en_word' placeholder='english word' onChange={this.handleChange}/><br/>
-                <input name='ru_word' placeholder='russian word' onChange={this.handleChange}/><br/>
+                <input name='word_en' placeholder='english word' onChange={this.handleChange}/><br/>
+                <input name='word_ru' placeholder='russian word' onChange={this.handleChange}/><br/>
                 <input name='image' placeholder='image' onChange={this.handleChange}/><br/>
                 <button onClick={this.createCard}>Create Card</button>
                 <button onClick={this.studyDeck}>Study Deck</button>

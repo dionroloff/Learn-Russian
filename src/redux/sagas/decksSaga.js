@@ -17,8 +17,8 @@ function* getDeck(action) {
 //this 
 function* createCard(action) {
     try {
-        console.log('in createCard saga');
-
+        yield axios.post('/api/cards', action.payload)
+        
     } catch(error) {
         console.log('error in createCard saga: ', error);
     }

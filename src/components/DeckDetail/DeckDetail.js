@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import CardItem from './../CardItem/CardItem';
+import DeckDetailTheme from './../DeckDetailTheme/DeckDetailTheme';
 import axios from 'axios';
 
 class DeckDetail extends Component {
-
-    handleAdd = (event) => {
-        this.props.history.push("/create");
+    handleAddNew = (event) => {
+        //this.props.match.params is {"id": whatever the deck id is}
+        this.props.history.push(`/create/${this.props.match.params.id}`);
     }
-    handleQuiz = (event) => {
-        this.props.history.push("/practice");
+    studyDeck = (event) => {
+        this.props.history.push('/practice');
     }
 
     //https://via.placeholder.com/200
@@ -22,18 +23,18 @@ class DeckDetail extends Component {
     }
 
     render() {
-
         return (
             <div>
-                {JSON.stringify(this.props.match.params)}
-                <h1>Detail of Deck</h1>
                 
-                {JSON.stringify(this.props.state.deckReducers)}
-    
-                {/* <img src=/> */}
+                <h1>Detail of Deck: </h1>
+                
+                {/* {this.props.state.deckReducers.map((card) => {
+                    return <DeckDetailTheme category={card.name} />
+                })} */}
+                
                 <table>
                     <thead>
-                        <tr><th>Russian Word</th><th>English Translation</th><th>Edit Card</th></tr>
+                        <tr><th>Russian Word</th><th>English Translation</th><th>Theme</th></tr>
                     </thead>
                     <tbody>
                         {this.props.state.deckReducers.map((card, i) => {
@@ -47,9 +48,9 @@ class DeckDetail extends Component {
                     </tbody>
                 </table>
 
-                <button onClick={this.handleAdd}>Add New Card</button>
+                <button onClick={this.handleAddNew}>Add New Card</button>
 
-                <button onClick={this.handleQuiz}>Begin Quiz</button>
+                <button onClick={this.studyDeck}>Study Deck</button>
             </div>
         )
     }
