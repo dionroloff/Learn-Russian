@@ -29,7 +29,7 @@ class CreateCard extends Component {
     }
 
     studyDeck = (event) => {
-        this.props.history.push("/practice");
+        this.props.history.push(`/practice/${this.props.match.params.id}`);
     }
 
     render() {

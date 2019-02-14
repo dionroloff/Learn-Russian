@@ -22,7 +22,7 @@ router.get('/your-decks', (req, res) => {
     if (req.isAuthenticated()) {
         console.log(`req.user: ${req.user}`);
         const queryText = `select *
-                    from "category";`;
+                           from "category";`;
         pool.query(queryText)
         .then((results) => {
             res.send(results.rows);
@@ -34,7 +34,7 @@ router.get('/your-decks', (req, res) => {
     } else {res.sendStatus(403);}
 })
 
-//this router allows the user to click on a particular deck and only see 
+//this request allows the user to click on a particular deck and only see 
 //the cards from that deck from the database
 router.get('/:id', (req, res) => {
     console.log('req.params: ', req.params);
@@ -57,7 +57,7 @@ router.get('/:id', (req, res) => {
     })
 })
 
-//this router POSTs a new card to the database
+//this request POSTs a new card to the database
 router.post('/', (req, res) => {
     console.log(req.body)
     const newCard = req.body;

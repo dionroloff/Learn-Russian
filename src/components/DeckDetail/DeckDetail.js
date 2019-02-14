@@ -10,7 +10,7 @@ class DeckDetail extends Component {
         this.props.history.push(`/create/${this.props.match.params.id}`);
     }
     studyDeck = (event) => {
-        this.props.history.push('/practice');
+        this.props.history.push(`/practice/${this.props.match.params.id}`);
     }
 
     //https://via.placeholder.com/200

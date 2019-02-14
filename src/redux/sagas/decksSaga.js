@@ -17,16 +17,26 @@ function* getDeck(action) {
 //this 
 function* createCard(action) {
     try {
-        yield axios.post('/api/cards', action.payload)
+        // yield axios.post('/api/cards', action.payload)
         
     } catch(error) {
         console.log('error in createCard saga: ', error);
     }
 }
 
+function* studyDeck(action) {
+    try{
+        console.log(`action.payload: ${action}`);
+        yield axios.get('/api/cards', action.payload)
+    } catch(error) {
+        console.log(`error in study deck saga: ${error}`)
+    }
+}
+
 function* decksSaga() {
     yield takeLatest('GET_CARDS', getDeck);
     yield takeLatest('CREATE_CARD', createCard);
+    yield takeLatest('STUDY_DECK', studyDeck)
 }
 
 export default decksSaga;
