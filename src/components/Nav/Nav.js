@@ -29,17 +29,11 @@ const Nav = (props) => (
       <Link className="nav-link" to="/about">
         About
       </Link>
-      <Link to="/deck">
-        Deck Detail
-      </Link>
-      <Link to="/create">
-        Create Card
-      </Link>
-      <Link to="/practice">
-        practice page
-      </Link>
       <Link to="/stats">
         stats page
+      </Link>
+      <Link to="/keyboard">
+        keyboard
       </Link>
     </div>
   </div>

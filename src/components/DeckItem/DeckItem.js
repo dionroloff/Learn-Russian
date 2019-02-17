@@ -16,7 +16,7 @@ class DeckItem extends Component {
         return(
             <tr>
                 <td onClick={this.handleClick}>
-                    {this.props.category}
+                   {this.props.category}
                 </td>
             </tr>
         )

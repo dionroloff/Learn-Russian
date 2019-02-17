@@ -13,14 +13,26 @@ class PracticePage extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch({type: 'STUDY_DECK'});
+        this.props.dispatch({ type: 'GET_CARDS', 
+                              payload: this.props.match.params.id});
     }
 
+    getRandomCards = () => {
+
+        let randomCards = [];
+        for (let i = 0; i < 8; i += 1) {
+            randomCards.push(this.props.state.deckReducers)
+        }
+        return randomCards;
+    }
+    
+
     render() {
-        
+
         return(
             <div>
                 <h1>Practice Page</h1>
+                {/* {this.props.getRandomCards} */}
                 {this.props.state.deckReducers.map((card, i) => {
                             return <PracticePageItem
                             history={this.props.history} 
@@ -28,7 +40,7 @@ class PracticePage extends Component {
                             english={card.word_en} 
                             russian={card.word_ru}
                             category={card.name}/>
-                        })}
+                })}
                 <button onClick={this.seeStats}>See Stats</button>
                 <button onClick={this.returnHome}>Return to home page</button>
             </div>
