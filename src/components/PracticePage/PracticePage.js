@@ -12,24 +12,14 @@ class PracticePage extends Component {
         this.props.history.push('/home');
     }
 
+    learnedCard = (event) => {
+        console.log('in learnedCard');
+    }
+
     componentDidMount() {
         this.props.dispatch({ type: 'GET_CARDS', 
                               payload: this.props.match.params.id});
-    }
-
-    getRandomCards = (arr) => { 
-        let i = arr.length - 1;
-        // let i = 8;
-        while(i > 0) {
-        //   const j = Math.floor(Math.random() * (8 - 1 + 1)) + 1;
-          const j = Math.floor(Math.random() * (8));
-          const temp = arr[i];
-          arr[i] = arr[j];
-          arr[j] = temp;
-          i--
-        }
-        return arr;
-        
+    
     }
 
     randomElement = (array) => {
@@ -43,10 +33,12 @@ class PracticePage extends Component {
         const guessCard = this.randomElement(this.props.state.deckReducers);
         // const randomCards = this.getRandomCards(this.props.state.deckReducers);
         console.log('guessCard:', guessCard);
+
         return(
             <div>
                 <h1>Practice Page</h1>
-                <h3>Click on {guessCard !== undefined? guessCard.word_en : null}</h3>
+                {/* this line will conditionally render a random card */}
+                <h3>Which card is {guessCard !== undefined? guessCard.word_ru : null}</h3>
                 
                 {/* {randomCards.map((card, i) => {
                     return <PracticePageItem
@@ -58,16 +50,19 @@ class PracticePage extends Component {
                 })} */}
                 {/* {this.props.getRandomCards} */}
                 {/* currently returns every card in the particular deck */}
-                {/* {this.props.state.deckReducers.map((card, i) => {
+                {guessCard !== undefined? this.props.state.deckReducers.map((card, i) => {
                             return <PracticePageItem
                             history={this.props.history} 
                             key={i} 
                             english={card.word_en} 
                             russian={card.word_ru}
-                            category={card.name}/>
-                })}
+                            category={card.name}
+                            categoryId={card.category}
+                            guessCard={guessCard} />
+                }) : null}
                 <button onClick={this.seeStats}>See Stats</button>
-                <button onClick={this.returnHome}>Return to home page</button> */}
+                <button onClick={this.returnHome}>Return to home page</button> 
+                <button onClick={this.learnedCard}>Learned</button>
             </div>
         )
     }

@@ -14,6 +14,14 @@ function* getDeck(action) {
     }
 }
 
+function* getUnlearned(action) {
+    try {
+        console.log('in getUnleared saga');
+    } catch(error) {
+        console.log(`error in getUnlearned saga: ${error}`);
+    }
+}
+
 //this 
 function* createCard(action) {
     try {
@@ -35,6 +43,7 @@ function* createCard(action) {
 
 function* decksSaga() {
     yield takeLatest('GET_CARDS', getDeck);
+    yield takeLatest('GET_UNLEARNED_CARDS', getUnlearned);
     yield takeLatest('CREATE_CARD', createCard);
     // yield takeLatest('STUDY_DECK', studyDeck)
 }
