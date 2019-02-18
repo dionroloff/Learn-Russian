@@ -5,7 +5,7 @@ class PracticePageItem extends Component {
     render() {
         return(
             <div>
-                {this.props.russian}
+                {this.props.english}
             </div>
         )
     }

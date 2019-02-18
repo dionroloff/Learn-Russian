@@ -17,23 +17,48 @@ class PracticePage extends Component {
                               payload: this.props.match.params.id});
     }
 
-    getRandomCards = () => {
-
-        let randomCards = [];
-        for (let i = 0; i < 8; i += 1) {
-            randomCards.push(this.props.state.deckReducers)
+    getRandomCards = (arr) => { 
+        let i = arr.length - 1;
+        // let i = 8;
+        while(i > 0) {
+        //   const j = Math.floor(Math.random() * (8 - 1 + 1)) + 1;
+          const j = Math.floor(Math.random() * (8));
+          const temp = arr[i];
+          arr[i] = arr[j];
+          arr[j] = temp;
+          i--
         }
-        return randomCards;
+        return arr;
+        
+    }
+
+    randomElement = (array) => {
+        //array.length represents the maximum acceptable number in the range
+        let randomNum = Math.floor(Math.random() * Math.floor(array.length));
+        return array[randomNum];
     }
     
 
     render() {
-
+        const guessCard = this.randomElement(this.props.state.deckReducers);
+        // const randomCards = this.getRandomCards(this.props.state.deckReducers);
+        console.log('guessCard:', guessCard);
         return(
             <div>
                 <h1>Practice Page</h1>
+                <h3>Click on {guessCard !== undefined? guessCard.word_en : null}</h3>
+                
+                {/* {randomCards.map((card, i) => {
+                    return <PracticePageItem
+                    history={this.props.history} 
+                    key={i} 
+                    english={card.word_en} 
+                    russian={card.word_ru}
+                    category={card.name}/>
+                })} */}
                 {/* {this.props.getRandomCards} */}
-                {this.props.state.deckReducers.map((card, i) => {
+                {/* currently returns every card in the particular deck */}
+                {/* {this.props.state.deckReducers.map((card, i) => {
                             return <PracticePageItem
                             history={this.props.history} 
                             key={i} 
@@ -42,7 +67,7 @@ class PracticePage extends Component {
                             category={card.name}/>
                 })}
                 <button onClick={this.seeStats}>See Stats</button>
-                <button onClick={this.returnHome}>Return to home page</button>
+                <button onClick={this.returnHome}>Return to home page</button> */}
             </div>
         )
     }

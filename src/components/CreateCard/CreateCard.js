@@ -108,7 +108,7 @@ class CreateCard extends Component {
 
     studyDeck = (event) => {
         console.log('in studyDeck');
-        // this.props.history.push(`/practice/${this.props.match.params.id}`);
+        this.props.history.push(`/practice/${this.props.match.params.id}`);
     }
 
     handleClick = () => {
@@ -146,6 +146,7 @@ class CreateCard extends Component {
                 <p>deck id: {Number(this.props.match.params.id)}</p>
             
                 <TextField
+                    onChange={this.handleChange}
                     name='word_en'
                     required
                     id="standard-required"
@@ -172,10 +173,6 @@ class CreateCard extends Component {
                     margin="normal"
                 />
 
-                {/* <input name='word_en' placeholder='english word' onChange={this.handleChange}/><br/>
-            <input name='word_ru' placeholder='russian word' onChange={this.handleChange}/><br/>
-            <input name='image' placeholder='image' onChange={this.handleChange}/><br/> */}
-
                 <div className={classes.placeholder}>
                     {query === 'success' ? (
                         <Typography>Success!</Typography>
@@ -191,14 +188,14 @@ class CreateCard extends Component {
                             </Fade>
                         )}
                 </div>
+
                 <Button onClick={this.handleClick} className={classes.button}>
                     {query !== 'idle' ? 'Creating...' : 'Create Card'}
                 </Button>
+
                 <Button onClick={this.studyDeck}>
                     Study Deck
-          </Button>
-
-
+                </Button>
             </div>
         );
     }
@@ -208,11 +205,10 @@ CreateCard.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-//   export default withStyles(styles)(CreateCard);
-
 const mapStateToProps = (state) => ({
     state
 });
 
+//   export default withStyles(styles)(CreateCard);
 export default connect(mapStateToProps)(withStyles(styles)(CreateCard));
 // export default connect((mapStateToProps)(CreateCard), withStyles(styles)(CreateCard));
