@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+import './PracticePageItem.css';
+
 import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
@@ -24,13 +27,15 @@ class PracticePageItem extends Component {
     render() {
 
         return (
-            <Grid spacing={16} justify='center'>
+            // <img src='./images/solo-project-wolf.jpg'/>
+            <Grid justify='center'>
                 {/* {JSON.stringify(this.props.state.id)} */}
-                <Grid item xs={12} onClick={this.compare} spacing={16}>
+                <Grid onClick={this.compare}>
                     <Paper elevation={3}>
-                        <Typography variant="h4" component="h3">
+                        <img src={this.props.image} />
+                        {/* <Typography variant="h4" component="h3">
                             {this.props.english}
-                        </Typography>
+                        </Typography> */}
                     </Paper>
                 </Grid>
             </Grid>

@@ -86,21 +86,7 @@ class PracticePage extends Component {
         })
     }
 
-
     render() {
-        
-        // const randomCards = this.shuffleDomCards(this.props.state.deckReducers);
-
-        //create empty array of cards which will go on the DOM
-
-        //push the correct card into the array so user has opportunity to guess correctly
-        
-        //from here, we push three random cards from the deck reducer into our domCards array, 
-        //making the array a length of 4
-        
-
-
-
         return (
             <div>
                 <h1>Practice Page</h1>
@@ -116,7 +102,8 @@ class PracticePage extends Component {
                         category={card.name}
                         categoryId={card.category}
                         guessCard={this.state.guessCard}
-                        selectACard={this.selectACard} />
+                        selectACard={this.selectACard} 
+                        image={card.image}/>
                 }) : (<button onClick={this.selectACard}>Start</button>)}
 
                 <button onClick={this.seeStats}>See Stats</button>
