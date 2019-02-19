@@ -16,7 +16,7 @@ function* getDeck(action) {
 
 function* getUnlearned(action) {
     try {
-        console.log('in getUnleared saga');
+        console.log('action.payload:', action.payload);
     } catch(error) {
         console.log(`error in getUnlearned saga: ${error}`);
     }
