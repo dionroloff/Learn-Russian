@@ -30,16 +30,18 @@ class PracticePage extends Component {
         return array[randomNum];
     }
 
-    // shuffleDomCards = (array) => {
-    //     let i = array.length - 1;
-    //     for (; i > 0; i--) {
-    //       const j = Math.floor(Math.random() * (i + 1));
-    //       const temp = array[i];
-    //       array[i] = array[j];
-    //       array[j] = temp;
-    //     }
-    //     return array;
-    //   }
+    //without this function the guessCard would always be the first card to append,
+    //making studying not work
+    shuffleDomCards = (array) => {
+        let j, x, i;
+        for (i = array.length - 1; i > 0; i--) {
+            j = Math.floor(Math.random() * (i + 1));
+            x = array[i];
+            array[i] = array[j];
+            array[j] = x;
+        }
+        return array;
+    }
 
 
     render() {
@@ -52,8 +54,8 @@ class PracticePage extends Component {
         let domCards = [];
         //push the correct card into the array so user has opportunity to guess correctly
         domCards.push(guessCard);
-        //loop through all the cards in the deckReducer and 
-
+        //from here, we push three random cards from the deck reducer into our domCards array, 
+        //making the array a length of 4
         for (let i = 0; i < 3; i += 1) {
 
 
@@ -69,6 +71,8 @@ class PracticePage extends Component {
 
             domCards.push(randomCard);
         }
+
+
 
         return (
             <div>
@@ -87,7 +91,7 @@ class PracticePage extends Component {
                 {/* {this.props.getRandomCards} */}
 
                 {/* currently returns every card in the particular deck */}
-                {guessCard !== undefined ? domCards.map((card, i) => {
+                {guessCard !== undefined ? this.shuffleDomCards(domCards).map((card, i) => {
                     return <PracticePageItem
                         history={this.props.history}
                         key={i}
