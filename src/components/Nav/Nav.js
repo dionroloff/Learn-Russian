@@ -32,9 +32,6 @@ const Nav = (props) => (
       <Link to="/stats">
         stats page
       </Link>
-      <Link to="/keyboard">
-        keyboard
-      </Link>
     </div>
   </div>
 );
