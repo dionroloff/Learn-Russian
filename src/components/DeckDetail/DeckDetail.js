@@ -28,13 +28,11 @@ class DeckDetail extends Component {
                 
                 <h1>Detail of Deck: </h1>
                 
-                {/* {this.props.state.deckReducers.map((card) => {
-                    return <DeckDetailTheme category={card.name} />
-                })} */}
+                {JSON.stringify(this.props.state.deckReducers)}
                 
                 <table>
                     <thead>
-                        <tr><th>Russian Word</th><th>English Translation</th><th>Theme</th></tr>
+                        <tr><th>Russian Word</th><th>English Translation</th><th>Remove Card</th></tr>
                     </thead>
                     <tbody>
                         {this.props.state.deckReducers.map((card, i) => {
@@ -43,7 +41,8 @@ class DeckDetail extends Component {
                             key={i} 
                             english={card.word_en} 
                             russian={card.word_ru}
-                            category={card.name}/>
+                            category={card.category}
+                            id={card.id}/>
                         })}
                     </tbody>
                 </table>

@@ -2,19 +2,6 @@ const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
 
-// /**
-//  * GET route template
-//  */
-// router.get('/', (req, res) => {
-    
-// });
-// /**
-//  * POST route template
-//  */
-// router.post('/', (req, res) => {
-
-// });
-
 //This GET request runs when the user is on the YourDecks page
 //It is reponsible for displaying each of the user's decks from the DB
 router.get('/your-decks', (req, res) => {
@@ -40,7 +27,7 @@ router.get('/:id', (req, res) => {
     console.log('req.params: ', req.params);
     //JOIN query joins cards table and category table to select 
     //only the cards of a particular category
-    const queryText = `select "word_en", "word_ru", "image", "category", "name" 
+    const queryText = `select "word_en", "word_ru", "image", "category", "name", "card"."id"
                        from "card"
                        join "category" 
                        on "card"."category" = "category"."id"
@@ -82,6 +69,18 @@ router.post('/', (req, res) => {
         res.sendStatus(500);
       });
 });
+
+router.delete('/:id', (req, res) => {
+    console.log(`req.params: ${req.params}`);
+    const queryText = `delete from "card" where "id" = $1;`;
+    pool.query(queryText, [req.params.id])
+    .then(() => {
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(`Error in deleting card: ${error}`);
+        res.sendStatus(500);
+    })
+})
 
 
 

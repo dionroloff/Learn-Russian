@@ -15,11 +15,9 @@ class PracticePageItem extends Component {
         // console.log('in compare function', this.props.guessCard);
         if (this.props.english === this.props.guessCard.word_en) {
             console.log('correct');
-            //this.props.categoryId is the number of the deck
-            // this.props.dispatch({ type: 'GET_UNLEARNED_CARDS', 
-            //                       payload: this.props.id});
+            this.props.selectACard();
         } else {
-            console.log('incorrect');
+            alert('that is incorrect');
         }
     } //end compare
 
