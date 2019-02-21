@@ -43,20 +43,32 @@ function* deleteCard(action) {
     }
 }
 
-// function* studyDeck(action) {
-//     try{
-//         console.log(`action.payload: ${action}`);
-//         yield axios.get('/api/cards', action.payload)
-//     } catch(error) {
-//         console.log(`error in study deck saga: ${error}`)
-//     }
-// }
+function* getUserStats(action) {
+    console.log(`in getUserStats, action.payload: ${action.payload}`);
+    try {
+        yield axios.get(`api/cards/stats/${action.payload}`, action.payload);
+    } catch(error) {
+        console.log(`error in getUserStats saga: ${error}`);
+    }
+}
+
+function* postGuess(action) {
+    try {
+        // console.log('in postGuess');
+        console.log('postGuess action:', action);
+        yield axios.post(`api/cards/guess/${action.payload.card_id}`, action.payload);
+    } catch(error) {
+        console.log(`error in postGuess saga: ${error}`);
+    }
+}
+
 
 function* decksSaga() {
     yield takeLatest('GET_CARDS', getDeck);
-    // yield takeLatest('GET_UNLEARNED_CARDS', getUnlearned);
+    yield takeLatest('GET_USER_STATS', getUserStats);
     yield takeLatest('CREATE_CARD', createCard);
     yield takeLatest('DELETE_CARD', deleteCard)
+    yield takeLatest('POST_GUESS', postGuess);
 }
 
 export default decksSaga;

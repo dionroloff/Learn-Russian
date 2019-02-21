@@ -44,6 +44,10 @@ router.get('/:id', (req, res) => {
     })
 })
 
+router.get('/stats/:id', (req, res) => {
+    console.log(`in stats router: ${req.body}`);
+})
+
 //this request POSTs a new card to the database
 router.post('/', (req, res) => {
     console.log(req.body)
@@ -68,6 +72,26 @@ router.post('/', (req, res) => {
         console.log('Error completing INSERT card query', error);
         res.sendStatus(500);
       });
+});
+
+router.post('/guess/:id', (req, res) => {
+    console.log('in guess post router');
+    const newGuess = req.body;
+    const queryText = `insert into guesses ("user_id", "card_id", "guessed_correctly")
+                       values ($1, $2, $3);`;
+    const queryValues = 
+    [
+        newGuess.user_id,
+        newGuess.card_id,
+        'true'
+    ];
+    pool.query(queryText, queryValues)
+    .then((response) => {
+        console.log('response', response);
+        res.sendStatus(201);
+    }).catch((error) => {
+        console.log(`error in guess post router: ${error}`);
+    })
 });
 
 router.delete('/:id', (req, res) => {

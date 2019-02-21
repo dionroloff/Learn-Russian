@@ -10,7 +10,7 @@ class PracticePage extends Component {
     }
 
     seeStats = (event) => {
-        this.props.history.push('/stats');
+        this.props.history.push(`/stats/${this.props.match.params.id}`);
     }
 
     returnHome = (event) => {
@@ -36,7 +36,7 @@ class PracticePage extends Component {
     }
 
     //without this function the guessCard would always be the first card to append,
-    //making studying not work
+    //making studying predictable and therefore disfunctional
     shuffleDomCards = (array) => {
         let i, j, x;
         for (i = array.length - 1; i > 0; i--) {
@@ -49,22 +49,25 @@ class PracticePage extends Component {
     }
 
     selectACard = () => {
-        const newDomCards = [];
-
+        //assign an empty array
+        let newDomCards = [];
+        //completly random card from the deck
         const guessCard = this.randomElement(this.props.state.deckReducers);
         
-        //randomly assign a card from the entire deck to guessCard
+        
         this.setState({
             guessCard : guessCard,
         })
-        
+        //newDomCards now has a length of one
         newDomCards.push(guessCard);
 
-        //this will prevent an infinite loop
+        //if the deck has less than 4 items, this if statement
+        // will prevent an infinite loop
         if (this.props.state.deckReducers.length < 4) {
-            return
+            return;
         }
 
+        //three times we pull a random card from the entire deck
         for (let i = 0; i < 3; i += 1) {
             let allCardsFromDeck = this.props.state.deckReducers;
             const randomCard = allCardsFromDeck[Math.floor(Math.random() * allCardsFromDeck.length)];
@@ -73,7 +76,8 @@ class PracticePage extends Component {
             const foundCard = newDomCards.find((element) => {
                 return element.word_en === randomCard.word_en
             })
-
+            //if the card is not already in the deck, we push to newDomCards,
+            //if the card is already in the deck, pull a new random card
             if (foundCard) {
                 i = i - 1;
             } else {
@@ -103,7 +107,8 @@ class PracticePage extends Component {
                         categoryId={card.category}
                         guessCard={this.state.guessCard}
                         selectACard={this.selectACard} 
-                        image={card.image}/>
+                        image={card.image}
+                        id={card.id}/>
                 }) : (<button onClick={this.selectACard}>Start</button>)}
 
                 <button onClick={this.seeStats}>See Stats</button>

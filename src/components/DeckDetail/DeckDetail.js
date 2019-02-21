@@ -27,9 +27,6 @@ class DeckDetail extends Component {
             <div>
                 
                 <h1>Detail of Deck: </h1>
-                
-                {JSON.stringify(this.props.state.deckReducers)}
-                
                 <table>
                     <thead>
                         <tr><th>Russian Word</th><th>English Translation</th><th>Remove Card</th></tr>
@@ -48,8 +45,8 @@ class DeckDetail extends Component {
                 </table>
 
                 <button onClick={this.handleAddNew}>Add New Card</button>
-
                 <button onClick={this.studyDeck}>Study Deck</button>
+                
             </div>
         )
     }
