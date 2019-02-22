@@ -7,7 +7,11 @@ body {
     src: url("/public/fonts/Kremlin.svg")format("svg");
 }
 
- h1, h2 {
+h1 {
+    font-family: 'Kremlin';
+    color: #007c89
+}
+h2 {
     font-family: 'Kremlin';
 }
 
@@ -41,7 +45,7 @@ input {
 }
 
 .log-in:hover, .log-out:hover, .register:hover {
-  background-color: #008183;
+  background-color: #007c89;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
@@ -65,7 +69,7 @@ table {
 th, td {
     text-align: left;
     padding: 8px;
-    border: 1px solid #ddd;
+    /* border: 1px solid #ddd; */
 }
 
 tr:nth-child(even){background-color: #f2f2f2}

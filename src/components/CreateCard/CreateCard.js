@@ -146,7 +146,7 @@ class CreateCard extends Component {
                 {/* originally this was a string */}
                 {/* <p>deck id: {Number(this.props.match.params.id)}</p> */}
                 <h1>Create a Card</h1>
-                <h4><i>When typing in Russian, use a keyboard overlay</i></h4>
+                <h4><i>To type in Russian, use a keyboard overlay.</i></h4>
             
                 <TextField
                     onChange={this.handleChange}
@@ -166,7 +166,7 @@ class CreateCard extends Component {
                     className={classes.textField}
                     margin="normal"
                 />
-                <TextField
+                {/* <TextField
                     onChange={this.handleChange}
                     name='image'
                     required
@@ -174,7 +174,7 @@ class CreateCard extends Component {
                     label="Image URL"
                     className={classes.textField}
                     margin="normal"
-                />
+                /> */}
 
                 <div className={classes.placeholder}>
                     {query === 'success' ? (

@@ -32,10 +32,10 @@ class PracticePageItem extends Component {
     render() {
 
         return (
-        
-            <div class='image' justify='center' onClick={this.compare}>  
-                <img src={this.props.image} />
-            </div> 
+            <img src={this.props.image} onClick={this.compare}/>
+            // <div class='image' justify='center' onClick={this.compare}>  
+            //     <img src={this.props.image} />
+            // </div> 
         )
     }
 }

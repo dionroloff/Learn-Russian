@@ -49,10 +49,10 @@ class PracticePage extends Component {
         let newDomCards = [];
         //completly random card from the deck
         const guessCard = this.randomElement(this.props.state.deckReducers);
-        
-        
+
+
         this.setState({
-            guessCard : guessCard,
+            guessCard: guessCard,
         })
         //newDomCards now has a length of one
         newDomCards.push(guessCard);
@@ -78,7 +78,7 @@ class PracticePage extends Component {
                 i = i - 1;
             } else {
                 newDomCards.push(randomCard);
-            }  
+            }
         }
 
         this.setState({
@@ -90,22 +90,32 @@ class PracticePage extends Component {
         return (
             <div>
                 <h1>Practice Page</h1>
+                
                 {/* this line will conditionally render a random card */}
-                <h3>{this.state.guessCard !== undefined ? this.state.guessCard.word_ru : null}</h3>
+                <h2>{this.state.guessCard !== undefined ? this.state.guessCard.word_ru : null}</h2>
 
                 {this.state.guessCard !== undefined ? this.shuffleDomCards(this.state.domCards).map((card, i) => {
-                    return <PracticePageItem
-                        history={this.props.history}
-                        key={i}
-                        english={card.word_en}
-                        russian={card.word_ru}
-                        category={card.name}
-                        categoryId={card.category}
-                        guessCard={this.state.guessCard}
-                        selectACard={this.selectACard} 
-                        image={card.image}
-                        id={card.id}/>
-                }) : (<button onClick={this.selectACard}>Start</button>)}
+                    return (
+                    <table>
+                        <tr>
+                            <td>
+                                <PracticePageItem
+                                    history={this.props.history}
+                                    key={i}
+                                    english={card.word_en}
+                                    russian={card.word_ru}
+                                    category={card.name}
+                                    categoryId={card.category}
+                                    guessCard={this.state.guessCard}
+                                    selectACard={this.selectACard}
+                                    image={card.image}
+                                    id={card.id} />
+                            </td>
+                        </tr>
+                        
+                    </table>
+                    )
+                }) : <h4><i>Click <button onClick={this.selectACard}>Start</button> when ready to begin</i></h4> }
 
                 <button onClick={this.seeStats}>See Stats</button>
                 <button onClick={this.returnHome}>Return to home page</button>

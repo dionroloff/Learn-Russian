@@ -31,7 +31,8 @@ class DeckDetail extends Component {
         return (
             <div>
                 
-                <h1>Detail of Deck: </h1>
+                <h1>Deck Detail</h1>
+                <h4><i>Here are all the cards in the deck</i></h4>
                 <table>
                     <thead>
                         <tr><th>Russian Word</th><th>English Translation</th><th>Remove Card</th></tr>
