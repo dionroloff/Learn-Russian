@@ -22,6 +22,7 @@ class PracticePageItem extends Component {
     //this component will let the user know if their guess
     //was correct or incorrect on click. If the guess is correct, the cards re-render
     compare = () => {
+        // console.log('clicked')
         if (this.props.english === this.props.guessCard.word_en) {
             // console.log('correct', this.props.id);
             this.props.dispatch({type: 'POST_GUESS', payload: this.state})

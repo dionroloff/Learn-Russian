@@ -46,6 +46,17 @@ router.get('/:id', (req, res) => {
 
 router.get('/stats/:id', (req, res) => {
     console.log(`in stats router: ${req.body}`);
+    const queryText = `select * from "guesses" 
+                       where "time_stamp" < $1;`;
+    pool.query(queryText, [today.getDate()])
+    .then((sqlResult) => {
+        res.send(sqlResult.rows);
+        res.sendStatus(200);
+    }).catch((error) => {
+        console.log(`error in stats router: ${error}`);
+        res.sendStatus(500);
+    })
+
 })
 
 //this request POSTs a new card to the database

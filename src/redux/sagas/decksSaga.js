@@ -14,14 +14,6 @@ function* getDeck(action) {
     }
 }
 
-// function* getUnlearned(action) {
-//     try {
-//         console.log('action.payload:', action.payload);
-//     } catch(error) {
-//         console.log(`error in getUnlearned saga: ${error}`);
-//     }
-// }
-
 //this will allow the user to add a new card to the database
 function* createCard(action) {
     try {
@@ -44,9 +36,10 @@ function* deleteCard(action) {
 }
 
 function* getUserStats(action) {
-    console.log(`in getUserStats, action.payload: ${action.payload}`);
+    console.log(`in getUserStats: ${action.payload.deck_id}`);
     try {
-        yield axios.get(`api/cards/stats/${action.payload}`, action.payload);
+        const serverResponse = yield axios.get(`api/cards/stats/${action.payload.deck_id}`, action.payload);
+        yield put({type: 'SET_STATS', payload: serverResponse.data});
     } catch(error) {
         console.log(`error in getUserStats saga: ${error}`);
     }
@@ -54,8 +47,6 @@ function* getUserStats(action) {
 
 function* postGuess(action) {
     try {
-        // console.log('in postGuess');
-        console.log('postGuess action:', action);
         yield axios.post(`api/cards/guess/${action.payload.card_id}`, action.payload);
     } catch(error) {
         console.log(`error in postGuess saga: ${error}`);

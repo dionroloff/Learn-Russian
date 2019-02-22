@@ -18,6 +18,9 @@ class DeckItem extends Component {
                 <td onClick={this.handleClick}>
                    {this.props.category}
                 </td>
+                <td>
+                    {this.props.state.deckReducers.length}
+                </td>
             </tr>
         )
     }

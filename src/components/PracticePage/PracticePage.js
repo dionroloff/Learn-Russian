@@ -17,10 +17,6 @@ class PracticePage extends Component {
         this.props.history.push('/home');
     }
 
-    learnedCard = (event) => {
-        console.log('in learnedCard');
-    }
-
     componentDidMount() {
         this.props.dispatch({
             type: 'GET_CARDS',
@@ -113,7 +109,6 @@ class PracticePage extends Component {
 
                 <button onClick={this.seeStats}>See Stats</button>
                 <button onClick={this.returnHome}>Return to home page</button>
-                <button onClick={this.learnedCard}>Learned</button>
 
             </div>
         )
