@@ -5,6 +5,11 @@ import DeckDetailTheme from './../DeckDetailTheme/DeckDetailTheme';
 import axios from 'axios';
 
 class DeckDetail extends Component {
+
+    goHome = (event) => {
+        this.props.history.push('/home');
+    }
+
     handleAddNew = (event) => {
         //this.props.match.params is {"id": whatever the deck id is}
         this.props.history.push(`/create/${this.props.match.params.id}`);
@@ -43,7 +48,8 @@ class DeckDetail extends Component {
                         })}
                     </tbody>
                 </table>
-
+                
+                <button onClick={this.goHome}>Home</button>
                 <button onClick={this.handleAddNew}>Add New Card</button>
                 <button onClick={this.studyDeck}>Study Deck</button>
                 

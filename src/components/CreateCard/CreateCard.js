@@ -145,7 +145,7 @@ class CreateCard extends Component {
                 {/* <p>user id: {JSON.stringify(this.props.state.user.id)}</p> */}
                 {/* originally this was a string */}
                 {/* <p>deck id: {Number(this.props.match.params.id)}</p> */}
-                <h2>Create a Card</h2>
+                <h1>Create a Card</h1>
                 <h4><i>When typing in Russian, use a keyboard overlay</i></h4>
             
                 <TextField

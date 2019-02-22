@@ -33,18 +33,12 @@ class YourDecks extends Component {
 
     return (
       <div>
-        {/* <h1 id="welcome">
-          Welcome, {this.props.user.username}!
-        </h1>
-        <p>Your ID is: {this.state}</p> */}
-
-        {JSON.stringify(this.state.categories)}
-        <h2>Your Decks</h2>
+        <h1>Your Decks</h1>
         <h4><i>Choose which deck you'd like to review</i></h4>
 
         <table className="user-decks">
           <thead>
-            <tr><th>Theme</th><th>Number of Cards</th></tr>
+            <tr><th>Examine Deck</th><th>Theme</th><th>Number of Cards</th></tr>
           </thead>
           <tbody>
             {this.state.categories.map((deck, i) => {

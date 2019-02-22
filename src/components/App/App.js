@@ -65,7 +65,7 @@ class App extends Component {
             <Route exact path='/practice/:id' component={PracticePage} />
             <Route exact path='/stats/:id' component={StatsPage} />
             {/* If none of the other routes matched, we will show a 404. */}
-            <Route render={() => <h1>404</h1>} />
+            <Route render={() => <h1>404 Not Found</h1>} />
           </Switch>
           {/* <Footer /> */}
         </div>

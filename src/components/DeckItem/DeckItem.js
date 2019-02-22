@@ -16,6 +16,9 @@ class DeckItem extends Component {
         return(
             <tr>
                 <td onClick={this.handleClick}>
+                    <button>View Cards</button>
+                </td>
+                <td>
                    {this.props.category}
                 </td>
                 <td>

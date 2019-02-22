@@ -2,6 +2,14 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0px;
 }
+@font-face {
+    font-family: 'Kremlin';
+    src: url("/public/fonts/Kremlin.svg")format("svg");
+}
+
+ h1, h2 {
+    font-family: 'Kremlin';
+}
 
 .alert {
     background-color: #ff4545;
@@ -23,7 +31,7 @@ input {
 }
 
 .log-in, .log-out, .register {
-  background-color: #00acb0;
+  background-color: #007c89;
   border-radius: 4px;
   color: #f8f8f8;
   min-height: 50px;

@@ -91,7 +91,7 @@ class PracticePage extends Component {
             <div>
                 <h1>Practice Page</h1>
                 {/* this line will conditionally render a random card */}
-                <h3>Which card is {this.state.guessCard !== undefined ? this.state.guessCard.word_ru : null}</h3>
+                <h3>{this.state.guessCard !== undefined ? this.state.guessCard.word_ru : null}</h3>
 
                 {this.state.guessCard !== undefined ? this.shuffleDomCards(this.state.domCards).map((card, i) => {
                     return <PracticePageItem
