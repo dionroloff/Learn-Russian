@@ -19,7 +19,7 @@ class DeckItem extends Component {
                    {this.props.category}
                 </td>
                 <td>
-                    {this.props.state.deckReducers.length}
+                    {this.props.count}
                 </td>
             </tr>
         )

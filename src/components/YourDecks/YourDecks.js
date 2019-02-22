@@ -48,7 +48,7 @@ class YourDecks extends Component {
           </thead>
           <tbody>
             {this.state.categories.map((deck, i) => {
-              return <DeckItem history={this.props.history} key={i} id={deck.id} category={deck.name} />
+              return <DeckItem history={this.props.history} key={i} id={deck.id} category={deck.name} count={deck.count} />
             })}
           </tbody>
         </table>

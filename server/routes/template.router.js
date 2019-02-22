@@ -8,8 +8,11 @@ router.get('/your-decks', (req, res) => {
     console.log(`req.body: ${req.body}`);
     if (req.isAuthenticated()) {
         console.log(`req.user: ${req.user}`);
-        const queryText = `select *
-                           from "category";`;
+        const queryText = `select "category".*, count("card"."category") as "count"
+        from "category"
+        join "card" 
+        on "category"."id" = "card"."category"
+        group by "category"."id";`;
         pool.query(queryText)
         .then((results) => {
             res.send(results.rows);
@@ -54,7 +57,7 @@ router.get('/stats/:id', (req, res) => {
         res.sendStatus(200);
     }).catch((error) => {
         console.log(`error in stats router: ${error}`);
-        res.sendStatus(500);
+        res.sendStatus(500)
     })
 
 })
