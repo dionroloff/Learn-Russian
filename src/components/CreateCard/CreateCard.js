@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+
+import './CreateCard.css';
+
 //Material UI
 import PropTypes from 'prop-types';
 import Fade from '@material-ui/core/Fade';
@@ -8,58 +11,6 @@ import { withStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import Typography from '@material-ui/core/Typography';
 import TextField from '@material-ui/core/TextField';
-
-
-
-// class CreateCard extends Component {
-
-//     //automatically assign the deck id and user id to state
-//     state = {
-//         word_en: '',
-//         word_ru: '',
-//         image: '',
-//         deck_category: Number(this.props.match.params.id),
-//         user_id: this.props.state.user.id
-//     }
-
-// handleChange = (event) => {
-//     if (event.target.name === 'word_en') {
-//         this.setState({word_en: event.target.value})
-//     } else if (event.target.name === 'word_ru') {
-//         this.setState({word_ru: event.target.value})
-//     } else {
-//         this.setState({image: event.target.value})
-//     }
-
-//     }
-
-//     createCard = (event) => {
-//         console.log(this.state)
-//         this.props.dispatch({type: 'CREATE_CARD', payload: this.state});
-//     }
-
-//     studyDeck = (event) => {
-//         this.props.history.push(`/practice/${this.props.match.params.id}`);
-//     }
-
-//     render() {
-
-//         return(
-//             <div>
-//                 <p>user id: {JSON.stringify(this.props.state.user.id)}</p>
-//                 {/* originally this was a string */}
-//                 <p>deck id: {Number(this.props.match.params.id)}</p>
-
-//                 <h2>Create Card page</h2>
-//                 <input name='word_en' placeholder='english word' onChange={this.handleChange}/><br/>
-//                 <input name='word_ru' placeholder='russian word' onChange={this.handleChange}/><br/>
-//                 <input name='image' placeholder='image' onChange={this.handleChange}/><br/>
-//                 <button onClick={this.createCard}>Create Card</button>
-//                 <button onClick={this.studyDeck}>Study Deck</button>
-//             </div>
-//         )
-//     }
-// }
 
 const styles = theme => ({
     root: {
@@ -141,13 +92,10 @@ class CreateCard extends Component {
 
         return (
             <div className={classes.root}>
-
-                {/* <p>user id: {JSON.stringify(this.props.state.user.id)}</p> */}
-                {/* originally this was a string */}
-                {/* <p>deck id: {Number(this.props.match.params.id)}</p> */}
                 <h1>Create a Card</h1>
                 <h4><i>To type in Russian, use a keyboard overlay.</i></h4>
             
+            <form align='center'>
                 <TextField
                     onChange={this.handleChange}
                     name='word_en'
@@ -166,7 +114,7 @@ class CreateCard extends Component {
                     className={classes.textField}
                     margin="normal"
                 />
-                {/* <TextField
+                <TextField
                     onChange={this.handleChange}
                     name='image'
                     required
@@ -174,7 +122,7 @@ class CreateCard extends Component {
                     label="Image URL"
                     className={classes.textField}
                     margin="normal"
-                /> */}
+                />
 
                 <div className={classes.placeholder}>
                     {query === 'success' ? (
@@ -196,9 +144,14 @@ class CreateCard extends Component {
                     {query !== 'idle' ? 'Creating...' : 'Create Card'}
                 </Button>
 
-                <Button onClick={this.studyDeck}>
+                <button onClick={this.studyDeck}>
                     Study Deck
-                </Button>
+                </button>
+</form>
+                {/* <button onClick={this.studyDeck}>
+                    Study Deck
+                </button> */}
+                
             </div>
         );
     }

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import './DeckItem.css';
+
 class DeckItem extends Component {
 
     //When the user clicks on an individul deck,

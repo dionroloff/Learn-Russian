@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PracticePageItem from './../PracticePageItem/PracticePageItem';
 
+import './PracticePage.css'
+
 class PracticePage extends Component {
 
     state = {
@@ -88,17 +90,16 @@ class PracticePage extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Practice Page</h1>
+            <div id='container'>
+                <h1 align='center'>Practice Page</h1>
                 
                 {/* this line will conditionally render a random card */}
-                <h2>{this.state.guessCard !== undefined ? this.state.guessCard.word_ru : null}</h2>
+                <h2 align='center'>{this.state.guessCard !== undefined ? this.state.guessCard.word_ru : null}</h2>
 
                 {this.state.guessCard !== undefined ? this.shuffleDomCards(this.state.domCards).map((card, i) => {
                     return (
-                    <table>
-                        <tr>
-                            <td>
+                    <div class="row" align='center'>
+                        <div class='column' align='center'>
                                 <PracticePageItem
                                     history={this.props.history}
                                     key={i}
@@ -110,15 +111,15 @@ class PracticePage extends Component {
                                     selectACard={this.selectACard}
                                     image={card.image}
                                     id={card.id} />
-                            </td>
-                        </tr>
+                        </div> 
                         
-                    </table>
+                    </div>
                     )
-                }) : <h4><i>Click <button onClick={this.selectACard}>Start</button> when ready to begin</i></h4> }
-
-                <button onClick={this.seeStats}>See Stats</button>
-                <button onClick={this.returnHome}>Return to home page</button>
+                }) : <h4 align='center'><i>Click <button onClick={this.selectACard}>Start</button> when ready to begin</i></h4> }
+                <br/>
+                <br/>
+                {/* <button onClick={this.seeStats}>See Stats</button> */}
+                <button id='home-btn' onClick={this.returnHome}>Home</button>
 
             </div>
         )

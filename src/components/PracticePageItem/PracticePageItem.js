@@ -25,17 +25,16 @@ class PracticePageItem extends Component {
             this.props.dispatch({type: 'POST_GUESS', payload: this.state})
             this.props.selectACard();
         } else {
-            alert('that is incorrect!');
+            alert('Try Again.');
         }
     } //end compare
 
     render() {
 
         return (
-            <img src={this.props.image} onClick={this.compare}/>
-            // <div class='image' justify='center' onClick={this.compare}>  
-            //     <img src={this.props.image} />
-            // </div> 
+            <div class='container'>
+                <img src={this.props.image} onClick={this.compare}/>
+            </div>
         )
     }
 }

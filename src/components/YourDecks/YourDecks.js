@@ -33,9 +33,10 @@ class YourDecks extends Component {
 
     return (
       <div>
-        <h1>Your Decks</h1>
-        <h4><i>Choose which deck you'd like to review</i></h4>
-
+        <h1 align='center'>Your Decks</h1>
+        <h4 align='center'><i>Choose which deck you'd like to review</i></h4>
+        <br/>
+        <br/>
         <table className="user-decks">
           <thead>
             <tr><th>Examine Deck</th><th>Theme</th><th>Number of Cards</th></tr>
