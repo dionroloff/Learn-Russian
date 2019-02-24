@@ -34,10 +34,10 @@ class DeckDetail extends Component {
                 <h1 align='center'>Deck Detail</h1>
                 <h4 align='center'><i>Here are all the cards in the deck</i></h4>
                 <br/>
-                <br/>
                 <button onClick={this.goHome}>Home</button>
                 <button onClick={this.handleAddNew}>Add New Card</button>
                 <button onClick={this.studyDeck}>Study Deck</button>
+                <br/>
                 <br/>
                 <br/>
                 <table>
@@ -56,6 +56,9 @@ class DeckDetail extends Component {
                         })}
                     </tbody>
                 </table>
+                <br/>
+                <br/>
+                <br/>
             </div>
         )
     }

@@ -47,6 +47,9 @@ class YourDecks extends Component {
             })}
           </tbody>
         </table>
+        <br/>
+        <br/>
+        <br/>
       </div>
     )
 
