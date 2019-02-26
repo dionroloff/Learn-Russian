@@ -31,7 +31,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
+      <div align='center'>
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -41,7 +41,7 @@ class LoginPage extends Component {
           </h2>
         )}
         <form onSubmit={this.login}>
-          <h1>Comrade Login</h1>
+          <h1>Login</h1>
           <div>
             <label htmlFor="username">
               Username:
