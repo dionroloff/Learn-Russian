@@ -24,7 +24,8 @@ CREATE TABLE "card" (
 CREATE TABLE "guesses" (
 	"user_id" INT NOT NULL,
 	"card_id" INT NOT NULL,
-	"guessed_correctly" BOOLEAN NOT NULL DEFAULT 'false'
+	"guessed_correctly" BOOLEAN NOT NULL DEFAULT 'false',
+	"date" DATE NOT NULL DEFAULT CURRENT_DATE,
 );
 
 

@@ -114,7 +114,7 @@ class CreateCard extends Component {
                     className={classes.textField}
                     margin="normal"
                 />
-                <TextField
+                {/* <TextField
                     onChange={this.handleChange}
                     name='image'
                     required
@@ -122,7 +122,7 @@ class CreateCard extends Component {
                     label="Image URL"
                     className={classes.textField}
                     margin="normal"
-                />
+                /> */}
 
                 <div className={classes.placeholder}>
                     {query === 'success' ? (
