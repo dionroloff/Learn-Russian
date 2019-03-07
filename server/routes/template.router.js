@@ -88,6 +88,7 @@ router.post('/', (req, res) => {
       });
 });
 
+//this will update the 'guesses' table on whether the user guessed a cards correctly or not
 router.post('/guess/:id', (req, res) => {
     console.log('in guess post router');
     const newGuess = req.body;
@@ -108,6 +109,7 @@ router.post('/guess/:id', (req, res) => {
     })
 });
 
+//this router deletes individual cards
 router.delete('/:id', (req, res) => {
     console.log(`req.params: ${req.params}`);
     const queryText = `delete from "card" where "id" = $1;`;
