@@ -31,9 +31,11 @@
     "client": "react-scripts start",
     "server": "nodemon --watch server server/server.js",
     "build": "react-scripts build",
+    "deploy": "aws s3 sync build/ s3://learnrussian2019",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "testServer": "jest server/test/*.test.js --forceExit"
+    "testServer": "jest server/test/*.test.js --forceExit",
+    "heroku-postbuild": "echo Skip build on Heroku"
   },
   "devDependencies": {
     "nodemon": "^1.17.2",
@@ -44,5 +46,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "heroku-run-build-script": true
 }
