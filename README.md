@@ -42,3 +42,11 @@ Upon clicking on a deck, the user is presented with each of the cards in that de
 When ready, click “Study Deck”. Then, to study the deck, click “Start”. The four images which render will be randomly pulled from the deck. The Russian word you at the top is the word in question which the user will try to connect to the corresponding image.
 
 If the image is correctly guessed, four new cards will render on the screen. If the guess is incorrect, an alert will appear at the top of the page prompting the user to guess again.
+
+## Technologies Used
+
+* React.js
+* Redux.js
+* Node.js
+* Express
+* PostgreSQL
